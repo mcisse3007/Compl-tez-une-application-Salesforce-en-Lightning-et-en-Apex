@@ -1,8 +1,8 @@
 public with sharing class AccountCasesController {
 
-    @AuraEnabled
-    public static void findCasesBySubject(){
-
+    @AuraEnabled(Cacheable=true)
+    public static List<Case> findCasesBySubject(Id accountId, String subjectSearchTerm){
+        return CaseSelector.getCasesByAccountIdAndSubject(accountId, subjectSearchTerm);
     }
 
 
